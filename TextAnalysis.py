@@ -242,9 +242,13 @@ print(results3)
 
 print(keyword_counts)
 
+categories = ['AlJezeera', 'CNN', 'LATimes']
+
 #Visualizing ResultsKey
 plt.bar(keyword_counts.keys(), keyword_counts.values(),)
+plt.bar(categories, color='skyblue')
 plt.title('Select Keyword Frequency in Global News Articles')
+
 
 plt.xlabel('Keywords')
 plt.ylabel('Frequency')
