@@ -5,19 +5,17 @@ import seaborn as sb
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as lda
-import nltk
-from nltk.corpus import wordnet as wn
 from boilerpipe.extract import Extractor
 import feedparser as fp
-
-# Downloading NLTK data
+import nltk
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('maxent_ne_chunker')
 nltk.download('words')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
-nltk.download('stopwords')
+from nltk.corpus import wordnet as wn
+
 
 # Creating Stopwords and Defining Lemmatizer
 wnl = nltk.WordNetLemmatizer()
@@ -62,10 +60,7 @@ for source, feed_url in zip(['AlJezeera', 'CNN', 'LATimes'], FEED_URLS):
             print(f'Download error from {source}: {page} - {str(e)}')
 
 # Check the number of articles from each source
-for source in source_texts:
-    print(f"{source}: {len(source_texts[source])} articles")
-
-    def count_keywords_by_source(source_texts):
+def count_keywords_by_source(source_texts):
     keyword_counts_by_source = defaultdict(lambda: defaultdict(int))
     for source, texts in source_texts.items():
         all_words = []
